@@ -28,6 +28,10 @@ void ArrayList_prepend(ArrayList *list, int value);
 
 void ArrayList_insert(ArrayList *list, int position, int value);
 
+int ArrayList_pop_last(ArrayList *list);
+
+int ArrayList_pop(ArrayList *list, int position);
+
 int max(int num_1, int num_2)
 {
     if (num_1 > num_2)
@@ -174,6 +178,28 @@ void ArrayList_insert(ArrayList *list, int position, int value)
 
 }
 
+
+int ArrayList_pop_last(ArrayList *list)
+{
+    list->length--;
+    return list->data[list->length];
+}
+
+
+int ArrayList_pop(ArrayList *list, int position)
+{
+    int deleted = list->data[position];
+
+    for (int i = position + 1; i < list->length; i++)
+    {
+        list->data[i - 1] = list->data[i];
+    }
+
+    list->length--;
+
+    return deleted;
+}
+
 int main(int argc, char* argv[])
 {
     
@@ -189,14 +215,14 @@ int main(int argc, char* argv[])
     ArrayList_info(list);
 
     list.data[3] = 3;
-    ArrayList_info(list);
+    //ArrayList_info(list);
 
     ArrayList_append(&list, 55);
-    ArrayList_info(list);
+    //ArrayList_info(list);
     ArrayList_append(&list, 255);
-    ArrayList_info(list);
+    //ArrayList_info(list);
     ArrayList_append(&list, 256);
-    ArrayList_info(list);
+    //ArrayList_info(list);
 
     for (int i = 1; i <= 10; i++)
     {
@@ -211,9 +237,40 @@ int main(int argc, char* argv[])
         ArrayList_insert(&list, i, i);
     }
 
+
+    ArrayList_info(list);
+    ArrayList_pop_last(&list);
+    ArrayList_pop_last(&list);
+    
+    ArrayList_info(list);
+    int deleted = ArrayList_pop_last(&list);
+    printf("\ndeleted = %d\n", deleted);
+    ArrayList_info(list);
+
+    ArrayList_append(&list, 345);
+    ArrayList_append(&list, 3456);
+    ArrayList_append(&list, 34567);
+    ArrayList_append(&list, 345678);
+    ArrayList_append(&list, -1);
+    ArrayList_append(&list, -11);
+    ArrayList_append(&list, -111);
+    
+    
+    
+    ArrayList_info(list);
+    k = list.length/2;
+    int del;
+    for (int i = 1; i <= k; i++)
+    {
+        del = ArrayList_pop(&list, i);
+        printf("\n%d. deleted = %d\n", i, del);
+    }
+
     ArrayList_info(list);
 
     ArrayList_free(&list);
     ArrayList_info(list);
+
+    
     return 0;
 }
