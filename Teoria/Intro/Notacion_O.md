@@ -11,7 +11,7 @@ La notación O (también llamada notación *Big-O* o *notación asintótica*) es
 
 - El lenguaje de programación y las habilidades del codificador usando dicho lenguaje.
 
-- El compilador e intérprete que se está usando.
+- El compilador o intérprete que se está usando.
 
 Sin embargo, la notación O es lo bastante buena para comparar algoritmos a partir de simple ***pseudocódigo***.
 
@@ -38,9 +38,9 @@ $f(n)=O(g(n))$ $\text{si y sólo si}$ $\color{#F00}\text{existe un momento}$  $\
 
 **¿Para qué nos sirve la notación O?**
 
-- Para comparar dos algoritmos que resuelven un mismo problema: El algoritmo de ordenamiento **Merge sort** tiene complejidad $O(n\log n)$ mientras que **Insertion sort** tiene complejidad $O(n^2)$.
+- Para comparar dos algoritmos que resuelven un mismo problema: Por ejemplo, el algoritmo de ordenamiento **Merge sort** tiene complejidad $O(n\log n)$ mientras que **Insertion sort** tiene complejidad $O(n^2)$.
 
-- Para comparar dos problemas computacionales: Está demostrado que no se puede diseñar un algoritmo de ordenamiento basado en comparar elementos que tenga una complejidad mejor que $O(n\log n)$, mientras que fácilmente podemos diseñar un algoritmo para hallar el máximo de un arreglo que tenga complejidad $O(n)$. Por lo que podríamos decir que hallar el máximo de un arreglo es más *"facil"* computacionalmente hablando que ordenarlo.
+- Para comparar dos problemas computacionales: Está demostrado que no se puede diseñar un algoritmo de ordenamiento basado en comparar elementos que tenga una complejidad mejor que $O(n\log n)$, mientras que fácilmente podemos diseñar un algoritmo para hallar el máximo de un arreglo que tenga complejidad $O(n)$. Por lo que podríamos decir que hallar el máximo de un arreglo es más *"fácil"* computacionalmente que ordenarlo por medio de comparaciones.
 
 
 
