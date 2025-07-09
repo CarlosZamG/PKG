@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define INIT_CAPACITY 8
+#define MIN_CAPACITY 16
 
 int max(int num_1, int num_2);
 
@@ -65,7 +65,7 @@ void ArrayList_print(ArrayList list)
 
 void ArrayList_init_from_array(ArrayList *list, int *array, int array_size)
 {
-    int capacity = max(INIT_CAPACITY, array_size);
+    int capacity = max(MIN_CAPACITY, array_size);
     list->data = malloc(sizeof(int) * capacity);
     
     for (int i = 0; i < array_size; i++)
@@ -202,9 +202,11 @@ int ArrayList_pop(ArrayList *list, int position)
 
 int main(int argc, char* argv[])
 {
-    
-    int arr[10];
 
+    printf("\nTest 1.");
+    printf("\nLet's create a list with the first 10 positive numbers stored in descending order:\n");
+
+    int arr[10];
     for (int i = 0; i < 10; i++)
     {
         arr[i] = 10 - i;
@@ -212,65 +214,88 @@ int main(int argc, char* argv[])
     
     ArrayList list;
     ArrayList_init_from_array(&list, arr, 10);
-    ArrayList_info(list);
+    ArrayList_print(list);
+    printf("\n");
+    //ArrayList_info(list);
+    //printf("\n");
 
-    list.data[3] = 3;
-    //ArrayList_info(list);
 
-    ArrayList_append(&list, 55);
-    //ArrayList_info(list);
-    ArrayList_append(&list, 255);
-    //ArrayList_info(list);
-    ArrayList_append(&list, 256);
-    //ArrayList_info(list);
 
+    printf("\nTest 2.");
+    printf("\nLet's append the first 10 positive multiplies of 11 to the list:\n");
+
+    for (int i = 1; i <= 10; i++)
+    {
+        ArrayList_append(&list, i*11);
+    }
+    
+    ArrayList_print(list);
+    printf("\n");
+    //ArrayList_info(list);
+    //printf("\n");
+
+
+    
+    printf("\nTest 3.");
+    printf("\nLet's prepend -1, -2, ..., -10 to the list:\n");
     for (int i = 1; i <= 10; i++)
     {
         ArrayList_prepend(&list, -i);
     }
     
-    ArrayList_info(list);
+    ArrayList_print(list);
+    printf("\n");
+    //ArrayList_info(list);
+    //printf("\n");
 
-    int k = list.length+15;
+
+    printf("\nTest 4.");
+    printf("\nLet's insert even numbers in the even positions in the list:\n");
+    int k = (list.length * 2) - 1;
     for (int i = 0; i <= k; i+=2)
     {
         ArrayList_insert(&list, i, i);
     }
 
+    ArrayList_print(list);
+    printf("\n");
+    //ArrayList_info(list);
+    //printf("\n");
 
-    ArrayList_info(list);
-    ArrayList_pop_last(&list);
-    ArrayList_pop_last(&list);
-    
-    ArrayList_info(list);
-    int deleted = ArrayList_pop_last(&list);
-    printf("\ndeleted = %d\n", deleted);
-    ArrayList_info(list);
 
-    ArrayList_append(&list, 345);
-    ArrayList_append(&list, 3456);
-    ArrayList_append(&list, 34567);
-    ArrayList_append(&list, 345678);
-    ArrayList_append(&list, -1);
-    ArrayList_append(&list, -11);
-    ArrayList_append(&list, -111);
+    printf("\nTest 5.");
+    printf("\nLet's delete the last 15 numbers in the list:\n");
     
-    
-    
-    ArrayList_info(list);
-    k = list.length/2;
-    int del;
-    for (int i = 1; i <= k; i++)
+    for (int i = 0; i < 15; i++)
     {
-        del = ArrayList_pop(&list, i);
-        printf("\n%d. deleted = %d\n", i, del);
+        ArrayList_pop_last(&list);
     }
 
-    ArrayList_info(list);
+    ArrayList_print(list);
+    printf("\n");
+    
+    
+    printf("\nTest 6.");
+    printf("\nLet's print the deleted element:\n");
+    int deleted = ArrayList_pop_last(&list);
+    printf("\nThe deleted is %d\n", deleted);
+    ArrayList_print(list);
+    printf("\n");
+    
 
+    printf("\nTest 7.");
+    printf("\nLet's delete some elements:\n");
+    
+    for (int i = 1; i < list.length; i++)
+    {
+        ArrayList_pop(&list, i);
+    }
+    ArrayList_print(list);
+    printf("\n");
+
+    ArrayList_info(list);
     ArrayList_free(&list);
     ArrayList_info(list);
-
     
     return 0;
 }
