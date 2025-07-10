@@ -21,6 +21,8 @@ void ArrayList_free(ArrayList *list);
 
 void ArrayList_info(ArrayList list);
 
+void ArrayList_resize(ArrayList *list, int more);
+
 void ArrayList_append(ArrayList *list, int value);
 
 void ArrayList_prepend(ArrayList *list, int value);
