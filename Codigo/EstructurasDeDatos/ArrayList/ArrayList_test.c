@@ -98,6 +98,19 @@ int main(int argc, char* argv[])
     printf("\n");
 
     ArrayList_info(list);
+    printf("\n");
+
+    printf("\nTest 8.");
+    printf("\nLet's delete more elements:\n");
+
+    for (int i = 1; i <= 6; i++)
+    {
+        ArrayList_pop_last(&list);
+    }
+
+    ArrayList_info(list);
+    printf("\n");
+
     ArrayList_free(&list);
     ArrayList_info(list);
     
