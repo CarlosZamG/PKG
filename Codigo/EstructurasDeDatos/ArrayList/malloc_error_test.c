@@ -3,6 +3,11 @@
 
 #include "ArrayList.h"
 
+// Command to generate the executable:
+//      gcc ArrayList.c malloc_error_test.c -o malloc_error.out
+// Command to run the program:
+//      ./malloc_error.out
+
 int main(int argc, char* argv[])
 {
 

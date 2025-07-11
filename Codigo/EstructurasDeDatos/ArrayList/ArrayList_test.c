@@ -4,6 +4,11 @@
 
 #include "ArrayList.h"
 
+// Command to generate the executable:
+//      gcc ArrayList.c ArrayList_test.c -o list.out
+// Command to run the program:
+//      ./list.out
+
 int main(int argc, char* argv[])
 {
 

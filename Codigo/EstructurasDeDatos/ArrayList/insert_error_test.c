@@ -3,6 +3,11 @@
 
 #include "ArrayList.h"
 
+// Command to generate the executable:
+//      gcc ArrayList.c insert_error_test.c -o insert_error.out
+// Command to run the program:
+//      ./insert_error.out
+
 int main(int argc, char* argv[])
 {
     printf("\nLet's create a list with the first 10 positive numbers:\n");

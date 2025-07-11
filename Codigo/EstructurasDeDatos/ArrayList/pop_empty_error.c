@@ -3,6 +3,11 @@
 
 #include "ArrayList.h"
 
+// Command to generate the executable:
+//       gcc ArrayList.c pop_empty_error.c -o pop_empty_error.out
+// Command to run the program:
+//      ./pop_empty_error.out
+
 int main(int argc, char* argv[])
 {
 
