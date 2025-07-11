@@ -83,6 +83,7 @@ void ArrayList_resize(ArrayList *list, int more)
     {
         list->capacity /= 2;
     }
+    list->capacity = max(list->capacity, MIN_CAPACITY);
     
     int *tmp = (int *) malloc(sizeof(int) * list->capacity);
 

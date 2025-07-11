@@ -103,7 +103,7 @@ int main(int argc, char* argv[])
     printf("\nTest 8.");
     printf("\nLet's delete more elements:\n");
 
-    for (int i = 1; i <= 6; i++)
+    for (int i = 1; i <= 16; i++)
     {
         ArrayList_pop_last(&list);
     }
