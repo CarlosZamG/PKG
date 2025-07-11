@@ -100,6 +100,7 @@ void ArrayList_resize(ArrayList *list, int more)
     if (tmp == NULL)
     {
         fprintf(stderr, "Memory allocation failed\n");
+        ArrayList_free(list);
         exit(EXIT_FAILURE);
     }
 
@@ -181,6 +182,7 @@ void ArrayList_insert(ArrayList *list, int position, int value)
     {
         // If the specified position is invalid, show an error message
         fprintf(stderr, "Invalid position. Integer position must be between 0 and %d\n",list->length);
+        ArrayList_free(list);
         exit(EXIT_FAILURE);
     }
 }
@@ -192,6 +194,7 @@ int ArrayList_pop_last(ArrayList *list)
     {
         // If the list is empty, show an error message
         fprintf(stderr, "Cannot pop from empty list\n");
+        ArrayList_free(list);
         exit(EXIT_FAILURE);
     }
 
@@ -212,6 +215,7 @@ int ArrayList_pop(ArrayList *list, int position)
     {
         // If the list is empty, show an error message
         fprintf(stderr, "Cannot pop from empty list\n");
+        ArrayList_free(list);
         exit(EXIT_FAILURE);
     }
 
@@ -219,6 +223,7 @@ int ArrayList_pop(ArrayList *list, int position)
     {
         // If position is invalid, show an error message
         fprintf(stderr, "Index out of bounds in ArrayList_pop\n");
+        ArrayList_free(list);
         exit(EXIT_FAILURE);
     }
     
