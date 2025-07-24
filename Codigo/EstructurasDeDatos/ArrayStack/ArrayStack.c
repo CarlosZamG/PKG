@@ -58,8 +58,7 @@ int ArrayStack_init_from_array(ArrayStack *stack, char **array, int array_size)
 
 int ArrayStack_init_empty(ArrayStack *stack)
 {
-    int capacity = STACK_MIN_CAPACITY;
-    stack->data = malloc(sizeof(char*) * capacity);
+    stack->data = malloc(sizeof(char*) * STACK_MIN_CAPACITY);
     if (stack->data == NULL)
     {
         fprintf(stderr, "Memory allocation failed\n");
@@ -67,7 +66,7 @@ int ArrayStack_init_empty(ArrayStack *stack)
     }
     
     stack->length = 0;
-    stack->capacity = capacity;
+    stack->capacity = STACK_MIN_CAPACITY;
 
     return EXIT_SUCCESS;
 }
