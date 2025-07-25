@@ -80,3 +80,30 @@ int ArrayStack_init_empty(ArrayStack *stack)
 
     return EXIT_SUCCESS;
 }
+
+int ArrayStack_push(ArrayStack *stack, char *element)
+{
+    if (stack->length + 1 > stack->capacity)
+    {
+        stack->capacity *= 2;
+        char **tmp = malloc(sizeof(char *) * stack->capacity);
+        if(tmp == NULL)
+        {
+            // If memory allocation failed, show error message and return EXIT_FAILURE
+            fprintf(stderr, "Memory allocation failed\n");
+            return EXIT_FAILURE;
+        }
+        // Copy stack data to the new memory space
+        for (int i = 0; i < stack->length; i++)
+        {
+            tmp[i] = stack->data[i];
+        }
+        free(stack->data);
+        stack->data = tmp;
+    }
+
+    stack->data[stack->length] = element;
+    stack->length++;
+
+    return EXIT_SUCCESS;
+}
