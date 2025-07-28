@@ -13,10 +13,22 @@ int main()
     printf("s1: %s\n", s1);
     printf("s2: %s\n", s2);
 
+    
     s1[0] = 'A';
     printf("s1: %s\n", s1);
-    s2[0] = 'A';     //It's not going to work
+    // s2[0] = 'A';     It's not going to work
     printf("s2: %s\n", s2);
+
+    s2++;
+    printf("s2: %s\n", s2);
+    // s1++;        It's not going to work
+    printf("s1: %s\n", s1);
+    
+
+    s2 = "xyz";
+    printf("s2: %s\n", s2);
+    // s1 = "xyz";      It's not going to work
+    printf("s1: %s\n", s1);
 
     return 0;
 }

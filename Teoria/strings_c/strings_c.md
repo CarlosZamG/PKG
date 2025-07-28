@@ -74,6 +74,132 @@ s1: Abcd
 Segmentation fault (core dumped)
 ```
 
+Notemos que al modificar la primera cadena inicializada como un arreglo de caracteres todo funciona sin problemas y obtenemos el comportamiento esperado, sin embargo al intentar hacer lo mismo con la cadena inicializada como puntero a carácter obtenemos un error. La diferencia es que `s1` es un arreglo de caracteres que se almacena en el *stack* y por lo tanto es modificable, mientras que `s2` es un puntero que apunta a una *string literal* que está almacenada en algún lugar en la memoria (dicho lugar no se especifica por el estándar de C) y no sabemos si podemos modificar dicho lugar de la memoria.
+
+Otra diferencia es que debido a que `s2` es un puntero a caracter, podemos usar aritmética de punteros, algo que no podemos hacer con `s1`. Consideremos el siguiente código:
+
+```c
+# include <stdio.h>
+
+int main()
+{
+    char s1[] = "abcd";
+    char *s2 = "abcd";
+
+    printf("s1: %s\n", s1);
+    printf("s2: %s\n", s2);
+
+    s2++;
+    printf("s2: %s\n", s2);
+    // s1++;
+    printf("s1: %s\n", s1);
+
+    return 0;
+}
+```
+
+Salida:
+
+```
+s1: abcd
+s2: abcd
+s2: bcd
+s1: abcd
+```
+
+Ahora el siguiente código:
+
+```c
+# include <stdio.h>
+
+int main()
+{
+    char s1[] = "abcd";
+    char *s2 = "abcd";
+
+    printf("s1: %s\n", s1);
+    printf("s2: %s\n", s2);
+
+    s2++;
+    printf("s2: %s\n", s2);
+    s1++;
+    printf("s1: %s\n", s1);
+
+    return 0;
+}
+```
+
+Con el código anterior obtendremos un error al momento de compilar:
+
+```sh
+strings_example_c_02.c: In function ‘main’:
+strings_example_c_02.c:25:7: error: lvalue required as increment operand
+   25 |     s1++;
+      |       ^~
+```
+
+Otra diferencia es que a `s1` no podemos asignarle nuevos valores usando una *string literal*, cosa que sí podemos hacer con `s2`:
+
+```c
+# include <stdio.h>
+
+int main()
+{
+    char s1[] = "abcd";
+    char *s2 = "abcd";
+
+    printf("s1: %s\n", s1);
+    printf("s2: %s\n", s2);
+
+    s2 = "xyz";
+    printf("s2: %s\n", s2);
+    //s1 = "xyz";
+    printf("s1: %s\n", s1);
+
+    return 0;
+}
+```
+
+Salida:
+
+```
+s1: abcd
+s2: abcd
+s2: xyz
+s1: abcd
+```
+
+Ahora intentemos hacer lo mismo con `s1`:
+
+```c
+# include <stdio.h>
+
+int main()
+{
+    char s1[] = "abcd";
+    char *s2 = "abcd";
+
+    printf("s1: %s\n", s1);
+    printf("s2: %s\n", s2);
+
+    s2 = "xyz";
+    printf("s2: %s\n", s2);
+    s1 = "xyz";
+    printf("s1: %s\n", s1);
+
+    return 0;
+}
+```
+
+Tendremos un error de compilación:
+
+```sh
+strings_example_c_02.c: In function ‘main’:
+strings_example_c_02.c:30:8: error: assignment to expression with array type
+   30 |     s1 = "xyz";
+      |        ^
+```
+
 ### El carácter `\0`
 
 
@@ -105,6 +231,6 @@ Podemos observar que al momento de usar `printf()` para imprimir el valor de `no
 
 ### Referencias
 
-1.  [***Are strings null terminated automatically by the compiler in C?***.](https://stackoverflow.com/questions/62335383/are-strings-null-terminated-automatically-by-the-compiler-in-c). StackOverflow. Revisado el 26 de julio de 2025.
+1.  [***Are strings null terminated automatically by the compiler in C?***.](https://stackoverflow.com/questions/62335383/are-strings-null-terminated-automatically-by-the-compiler-in-c) StackOverflow. Revisado el 26 de julio de 2025.
 
 2. [***String In Char Array VS. Pointer To String Literal | C Programming Tutorial***](https://youtu.be/Qp3WatLL_Hc?si=-TH8S2VVQ5MY3IGG). YouTube: Portfolio Courses. Revisado el 26 de julio de 2025.
