@@ -105,14 +105,17 @@ int ArrayStack_resize(ArrayStack *stack, int more)
 {
     if (more)
     {
-        // If more space is needed, doubles de capacity
+        // If more memory space is needed, doubles the capacity
         stack->capacity *= 2;
     }
     else
     {
-        // If less space is needed, doubles de capacity
+        // If less memory space is needed, reduce capacity by half
         stack->capacity /= 2;
     }
+
+    // Maintain the minimum capacity
+    stack->capacity = max(stack->capacity, STACK_MIN_CAPACITY);
 
     char **tmp = malloc(sizeof(char *) * stack->capacity);
     if(tmp == NULL)
@@ -135,23 +138,15 @@ int ArrayStack_push(ArrayStack *stack, char *element)
 {
     if (stack->length + 1 > stack->capacity)
     {
-        stack->capacity *= 2;
-        char **tmp = malloc(sizeof(char *) * stack->capacity);
-        if(tmp == NULL)
+        // If more memory space is needed, resize 
+        int status = ArrayStack_resize(stack, 1);
+        if (status == EXIT_FAILURE)
         {
-            // If memory allocation failed, show error message and return EXIT_FAILURE
-            fprintf(stderr, "Memory allocation failed\n");
             return EXIT_FAILURE;
         }
-        // Copy stack data to the new memory space
-        for (int i = 0; i < stack->length; i++)
-        {
-            tmp[i] = stack->data[i];
-        }
-        free(stack->data);
-        stack->data = tmp;
     }
 
+    // Add the next element in the LIFO ordering
     stack->data[stack->length] = element;
     stack->length++;
 
@@ -189,8 +184,9 @@ int ArrayStack_pop(ArrayStack *stack, char **element)
 
     if (stack->length <= (stack->capacity/4))
     {
-        ArrayStack_resize(stack, 0);
+        // If we have too much extra space, resize
+        return ArrayStack_resize(stack, 0);
     }
-    
+
     return EXIT_SUCCESS;
 }

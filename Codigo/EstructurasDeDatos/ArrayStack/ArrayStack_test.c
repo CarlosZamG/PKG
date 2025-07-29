@@ -86,6 +86,19 @@ int main() {
         printf("\nstack_2 is empty");
     }
     printf("\n");
+    ArrayStack_info(stack_2);
+    
+    char *popped;
+    for (int i = 0; i < 23; i++)
+    {
+        ArrayStack_pop(&stack_2, &popped);
+        ArrayStack_print(stack_2);
+        printf("\n");
+    }
+    
+    printf("\nlast string popped: %s\n", popped);
+    ArrayStack_info(stack_2);
+
     ArrayStack_free(&stack);
     ArrayStack_free(&stack_2);
     //ArrayStack_info(stack);
