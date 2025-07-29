@@ -3,6 +3,10 @@
 
 #include "ArrayStack.h"
 
+// Command to generate the executable:
+//      gcc ArrayStack.c ArrayStack_test.c -o stack_test.out
+// Command to run the program:
+//      ./stack_test.out
 int main() {
 
     char *arr[5] = {"Hello", "World", "of", "Data", "Structures"};
@@ -14,12 +18,34 @@ int main() {
 
     ArrayStack stack_2;
     ArrayStack_init_empty(&stack_2);
-    ArrayStack_print(stack_2);
+
+    //ArrayStack_print(stack_2);
+
+    char *peeked;
+
+    if(ArrayStack_peek(stack_2, &peeked) == EXIT_SUCCESS)
+    {
+        printf("\npeeked string: %s", peeked);
+    }
+    else
+    {
+        printf("stack_2 is empty");
+    }
     printf("\n");
 
     char *str = "Alan";
     ArrayStack_push(&stack_2, str);
     ArrayStack_print(stack_2);
+    //printf("\n");
+
+    if(ArrayStack_peek(stack_2, &peeked) == EXIT_SUCCESS)
+    {
+        printf("\npeeked string: %s", peeked);
+    }
+    else
+    {
+        printf("\nstack_2 is empty");
+    }
     printf("\n");
 
     ArrayStack_push(&stack_2, "Jim");
@@ -27,6 +53,14 @@ int main() {
     ArrayStack_push(&stack_2, "Robby");
     ArrayStack_push(&stack_2, "John");
     ArrayStack_print(stack_2);
+    if(ArrayStack_peek(stack_2, &peeked) == EXIT_SUCCESS)
+    {
+        printf("\npeeked string: %s", peeked);
+    }
+    else
+    {
+        printf("\nstack_2 is empty");
+    }
     printf("\n");
 
     char *alphabet[26];
@@ -39,12 +73,24 @@ int main() {
         ArrayStack_push(&stack_2, alphabet[i]);
     }
     
-    char c_str[3] = "abc";
-    printf("%s\n", c_str);
-
-
+    //ArrayStack_info(stack_2);
     ArrayStack_print(stack_2);
+    //printf("\n");
+    //
+    if(ArrayStack_peek(stack_2, &peeked) == EXIT_SUCCESS)
+    {
+        printf("\npeeked string: %s", peeked);
+    }
+    else
+    {
+        printf("\nstack_2 is empty");
+    }
     printf("\n");
+    ArrayStack_free(&stack);
+    ArrayStack_free(&stack_2);
+    //ArrayStack_info(stack);
+    printf("\n");
+    //ArrayStack_info(stack_2);
 
     return 0;
 }
