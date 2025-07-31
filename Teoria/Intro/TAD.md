@@ -18,4 +18,10 @@ Podemos adoptar dos posturas al momento de trabajar con un TAD:
 
 ## Ejemplos de algo que NO es un TAD
 
-Supongamos que al trabajar con un lenguaje orientado a objetos creamos una clase `Persona` con atributos como `nombres`, `apellido_paterno`, `apellido_materno` y `edad`. Si además implementamos los correspondientes `getters` y `setters` ¿Estaríamos implemntando un TAD? La respuesta es que no califica como un TAD porque no está exhibiendo un comportamiento real, simplemente es un contenedor que almacena información.   
+Supongamos que al trabajar con un lenguaje orientado a objetos creamos una clase `Persona` con atributos como `nombres`, `apellido_paterno`, `apellido_materno` y `edad`. Si además implementamos los correspondientes `getters` y `setters` ¿Estaríamos implementando un TAD? La respuesta es que no califica como un TAD porque no está exhibiendo un comportamiento real, simplemente es un contenedor que almacena información.
+
+### Referencias
+
+1. [2024-03-21 - Teórica - Implementación sobre Arreglos y Estructuras enlazadas](https://youtu.be/57hepjLPA30?si=8RiiN4wYslrU0iFp). YouTube: Algoritmos Fiuba Curso Buchwald.
+
+2. **Algorithms**. Robert Sedgewick y Kevin Wayne. Fourth edition. Pearson Education, Inc.
