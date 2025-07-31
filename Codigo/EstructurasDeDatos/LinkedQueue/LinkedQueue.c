@@ -53,6 +53,7 @@ int LinkedQueue_dequeue(LinkedQueue *queue, int *return_value)
 {
     if (queue->length == 0)
     {
+        // If queue is empty, show error message and return EXIT_FAILURE
         fprintf(stderr, "Cannot dequeue from empty queue\n");
         return EXIT_FAILURE;
     }
@@ -60,19 +61,36 @@ int LinkedQueue_dequeue(LinkedQueue *queue, int *return_value)
     QueueNode *deleted_node = queue->head;
     queue->head = queue->head->next;
 
+    // Return deleted_node data
     *return_value = deleted_node->data;
+    // Clean deleted_node values
     deleted_node->data = 0;
     deleted_node->next = NULL;
+    // Free deleted_node memory
     free(deleted_node);
     queue->length--;
 
-    if (queue->length == 1)
+    if (queue->length == 0)
     {
         LinkedQueue_set_empty(queue);
     }
     
     return EXIT_SUCCESS;
-    
+}
+
+
+int LinkedQueue_peek(LinkedQueue queue, int *return_value)
+{
+    if (queue.length == 0)
+    {
+        // If queue is empty, show error message and return EXIT_FAILURE
+        fprintf(stderr, "Cannot peek from empty queue\n");
+        return EXIT_FAILURE;
+    }
+
+    // Return head data
+    *return_value = queue.head->data; 
+    return EXIT_SUCCESS;
 }
 
 
@@ -97,20 +115,24 @@ int LinkedQueue_init_from_array(LinkedQueue *queue, int *array, int array_size)
 
 void LinkedQueue_print(LinkedQueue queue)
 {
+    // Print an openning square bracket
     printf("[");
     if (queue.length == 0)
     {
+        // If queue is empty, print a closing square bracket
         printf(" ]");
         return;
     }
 
     QueueNode *current_node = queue.head;
+    // Print all nodes data except for the last one
     while (current_node->next != NULL)
     {
         int value = current_node->data;
         printf("%d, ", value);
         current_node = current_node->next;
     }
+    // Print last node data and a closing square bracket
     printf("%d]", current_node->data);
 }
 
@@ -121,6 +143,7 @@ void LinkedQueue_info(LinkedQueue queue)
     LinkedQueue_print(queue);
     printf("\n\t length: %d\n\t", queue.length);
 
+    // Print head information
     if (queue.head == NULL)
     {
         printf(" head is NULL\n\t");
@@ -130,6 +153,7 @@ void LinkedQueue_info(LinkedQueue queue)
         printf(" head data: %d\n\t", queue.head->data);
     }
 
+    // Print tail information
     if (queue.tail == NULL)
     {
         printf(" tail is NULL\n}\n");
@@ -143,23 +167,10 @@ void LinkedQueue_info(LinkedQueue queue)
 
 void LinkedQueue_free(LinkedQueue *queue)
 {
-    QueueNode *current_node = queue->head;
-    QueueNode *prev_node = current_node;
-
-    while (current_node != NULL)
+    int ret;
+    // Dequeue all queue elements
+    while (queue->length > 0)
     {
-        prev_node = current_node;
-        current_node = current_node->next;
-        // Clean node values
-        prev_node->data = 0;
-        prev_node->next = NULL;
-        // Free memory for each node
-        free(prev_node);
+        LinkedQueue_dequeue(queue, &ret);
     }
-
-    // Set queue head and tail to points to NULL
-    queue->head = NULL;
-    queue->tail = NULL;
-    // Set queue length to 0
-    queue->length = 0;
 }
