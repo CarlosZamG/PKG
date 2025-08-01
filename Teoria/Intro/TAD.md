@@ -25,3 +25,5 @@ Supongamos que al trabajar con un lenguaje orientado a objetos creamos una clase
 1. [2024-03-21 - Teórica - Implementación sobre Arreglos y Estructuras enlazadas](https://youtu.be/57hepjLPA30?si=8RiiN4wYslrU0iFp). YouTube: Algoritmos Fiuba Curso Buchwald.
 
 2. **Algorithms**. Robert Sedgewick y Kevin Wayne. Fourth edition. Pearson Education, Inc.
+
+3. [2024-03-18 - Teórica - Introducción a Tipos de Datos Abstractos](https://youtu.be/cdpj6h8pSQk?si=wsKKrh1MzvkOHluA). YouTube: Algoritmos Fiuba Curso Buchwald.
