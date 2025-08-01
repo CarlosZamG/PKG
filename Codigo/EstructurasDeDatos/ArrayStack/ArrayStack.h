@@ -16,10 +16,10 @@ void ArrayStack_print(ArrayStack stack);
 // Print stack information with pretty format 
 void ArrayStack_info(ArrayStack stack);
 
-
+// Create an stack with array values
 int ArrayStack_init_from_array(ArrayStack *stack, char **array, int array_size);
 
-
+// Create an empty stack
 int ArrayStack_init_empty(ArrayStack *stack);
 
 // Free stack memory 
