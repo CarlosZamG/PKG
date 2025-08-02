@@ -29,7 +29,7 @@ Operaciones que se pueden hacer:
 - `peek()`: Ver elemento en el tope de la pila.
 - `is_empty()`: Checar si está vacía.
 
-Este TAD manipula los elementos en un orden *LIFO: Last In, First Out*, es decir, el último elemento es ser apilado es el primero en ser desapilado.
+Este TAD manipula los elementos en un orden ***LIFO: Last In, First Out***, es decir, el último elemento es ser apilado es el primero en ser desapilado.
 
 Aplicaciones:
 
@@ -45,15 +45,32 @@ Operaciones que se pueden hacer:
 - `peek()`: Ver el primer elemento.
 - `is_empty()`: Checar si está vacía.
 
-Este TAD manipula los elementos en un orden *LIFO: First In, First Out*, es decir, el primer elemento es ser encolado es el primero en ser desencolado.
+Este TAD manipula los elementos en un orden ***LIFO: First In, First Out***, es decir, el primer elemento es ser encolado es el primero en ser desencolado.
 
 **Nota**: Todas las operaciones anteriores de los TAD Pila y Cola pueden hacerse en tiempo $O(1)$ en el peor caso en análisis amortizado.
 
 
+## Implementaciones sobre arreglos y sobre listas enlazadas
+
+Una forma de implementar los TAD's anteriores es usando como base un arreglo. Un arreglo es una colección de **tamaño fijo** de elementos que cumplen dos características muy importantes: 
+
+1. Todos los elementos ocupan el **mismo espacio** en memoria.
+
+2. Los elementos están almacenados de forma **contigua** en memoria.
+
+Estos dos puntos permiten que se pueda **acceder** a cualquier elemento de un arreglo en **tiempo constante** mediante simples operaciones aritméticas.
+
+EL principal inconveniente de utilizar arreglos para implementar los anteriores TAD's es que un arreglo tiene un tamaño fijo, mientras que en los TAD's anteriores podemos agregar y eliminar elementos, así que podríamos enfrentarnos a alguna de siguientes las dos problemáticas: O nos falta espacio para guardar más elementos, o nos sobra demasiado espacio sin utilizar (se está desperdiciando espacio).
+
+Para lidiar con esto, al momento de implementar los TAD's, se debe implementar una funcionalidad interna de **redimensión**, que se encargue de aumentar o disminuir la capacidad del arreglo sobre el que se está implementando el TAD cada que sea conveniente.
+
+**¿Cuándo es conveniente redimensionar?**
 
 
 ### Referencias
 
 1. [Elementary Data Structures (part 1): Stacks and Dynamic Arrays](https://youtu.be/ZlZoe37yWEc?si=Pk-REU0ctg3bVXJ5). YouTube: Algorithms Lab.
 
-2. [2024-03-18 - Teórica - Introducción a Tipos de Datos Abstractos](https://youtu.be/cdpj6h8pSQk?si=wsKKrh1MzvkOHluA). YouTube: Algoritmos Fiuba Curso Buchwald
+2. [2024-03-18 - Teórica - Introducción a Tipos de Datos Abstractos](https://youtu.be/cdpj6h8pSQk?si=wsKKrh1MzvkOHluA). YouTube: Algoritmos Fiuba Curso Buchwald.
+
+3. [2024-03-21 - Teórica - Implementación sobre Arreglos y Estructuras enlazadas](https://youtu.be/57hepjLPA30?si=8RiiN4wYslrU0iFp). YouTube: Algoritmos Fiuba Curso Buchwald.
