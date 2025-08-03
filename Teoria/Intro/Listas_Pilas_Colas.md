@@ -52,6 +52,8 @@ Este TAD manipula los elementos en un orden ***LIFO: First In, First Out***, es 
 
 ## Implementaciones sobre arreglos y sobre listas enlazadas
 
+### Implementación sobre arreglos
+
 Una forma de implementar los TAD's anteriores es usando como base un arreglo. Un arreglo es una colección de **tamaño fijo** de elementos que cumplen dos características muy importantes: 
 
 1. Todos los elementos ocupan el **mismo espacio** en memoria.
@@ -64,7 +66,25 @@ EL principal inconveniente de utilizar arreglos para implementar los anteriores 
 
 Para lidiar con esto, al momento de implementar los TAD's, se debe implementar una funcionalidad interna de **redimensión**, que se encargue de aumentar o disminuir la capacidad del arreglo sobre el que se está implementando el TAD cada que sea conveniente.
 
-**¿Cuándo es conveniente redimensionar?**
+Evidentemente debemos redimensionar para aumentar el espacio del arreglo cuando queramos agregar un nuevo elemento y ya hayamos ocupado todos los espacios disponibles del arreglo.
+
+**¿Cómo es conveniente redimensionar?**
+
+Supogamos que intentamos redimensionar aumentando la capacidad de nuestro arreglo de uno en uno, es decir, si nuestra capacidad actual es de 16 elementos que ya tenemos almacenados y queremos agregar un elemento más, pediríamos memoria para 17 elementos y debemos copiar los otros 16 elementos del arreglo anterior y agregar el nuevo elemento. Claramente el copiar todos esos elementos lleva un tiempo $O(n)$, por lo tanto agregar un elemento también sería $O(n)$ a partir del momento en el que superamos la capacidad del arreglo inicial, así que no parece una política de redimensión muy óptima.
+
+Analicemos ahora el caso de un redimensionamiento incremental:
+
+1. Partimos de una capacidad inicial $C$.
+
+2. Cuando ya no tenemos espacio suficiente, incrementamos la capacidad de nuestro arreglo con $K$ nuevos espacios.
+
+Queremos calcular la complejidad temporal $T(n)$ de agregar $n$ elementos.
+
+Sea $L = \lfloor(n-C)/K \rfloor = O(n)$.
+
+$$T(n)= 1 + 1 + 1 + \cdots + 1 + C \\ + 1 + \cdots + 1 + (C+K)\\  + 1 + \cdots + 1 + (C+2K) + 1 + \\  \cdots + 1 +  (C+L  \cdot K) + 1 + \cdots\\ \leq n + C \cdot(L +1) + K\cdot (1+ 2+\cdots+L)\\= n + C\cdot(L+1) + K\cdot((L+1)(L)/2) \\=n + O(n)+O(n^2) = O(n^2)$$
+
+Entonces $T(n)/n = O(n^2)/n = O(n)$, dónde $T(n)/n$ representa la complejidad temporal promedio de agregar un elemento.  
 
 
 ### Referencias
@@ -74,3 +94,5 @@ Para lidiar con esto, al momento de implementar los TAD's, se debe implementar u
 2. [2024-03-18 - Teórica - Introducción a Tipos de Datos Abstractos](https://youtu.be/cdpj6h8pSQk?si=wsKKrh1MzvkOHluA). YouTube: Algoritmos Fiuba Curso Buchwald.
 
 3. [2024-03-21 - Teórica - Implementación sobre Arreglos y Estructuras enlazadas](https://youtu.be/57hepjLPA30?si=8RiiN4wYslrU0iFp). YouTube: Algoritmos Fiuba Curso Buchwald.
+
+4. [Whiteboard: Analysis of Incremental Strategy for Dynamic Arrays](https://youtu.be/1GpWHME0vKs?si=cBe0owCuPt5TGsWS). YouTube: Algorithms Lab.
