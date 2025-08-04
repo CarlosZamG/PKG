@@ -100,6 +100,16 @@ Entonces la complejidad promedio de agregar un elemento es $T(n)/n = O(n)/n = O(
 En la parte anterior vimos que una buena estrategia para agrandar el arreglo era duplicar el tamaño, siguiendo esa idea una estrategia para achicar la capacidad del arreglo es reducir el espacio a la mitad, de tal manera que al hacerlo nos quede una capacidad igual al doble de la cantidad total de elementos, es decir, vamos a dividir la capacidad a la mitad cuando la cantidad total de elementos sea menor o igual a un cuarto de la capacidad  
 
 
+### Implementación sobre listas enlazadas
+
+Las listas enlazadas son otra estructura de datos que nos permite implementar los TAD's anteriores. Se componen de varios **nodos** que tienen dos campos, un campo almacena la información a guardar y otro almacena una referencia al siguiente nodo.
+
+Así nuestra estructura de datos debe guardar una referencia al "*primer*" nodo, a partir del cuál se accede a los siguientes nodos iterando mediante sus referencias al siguiente nodo.
+
+La principal deseventaja de utilizar listas enlazadas es que para acceder a un nodo, debemos visitar todos los nodos anteriores, por lo tanto el acceder a un elemento tiene complejidad $O(n)$.
+
+
+
 ### Referencias
 
 1. [Elementary Data Structures (part 1): Stacks and Dynamic Arrays](https://youtu.be/ZlZoe37yWEc?si=Pk-REU0ctg3bVXJ5). YouTube: Algorithms Lab.
