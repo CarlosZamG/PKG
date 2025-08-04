@@ -87,6 +87,15 @@ $$T(n)= 1 + 1 + 1 + \cdots + 1 + C \\ + 1 + \cdots + 1 + (C+K)\\  + 1 + \cdots +
 Entonces $T(n)/n = O(n^2)/n = O(n)$, dónde $T(n)/n$ representa la complejidad temporal promedio de agregar un elemento.  
 
 
+Ahora analicemos un redimensionamiento en el que duplicamos la capacidad actual cada vez que necesitamos más espacio, supongamos que la capacidad inicial es $C$.
+
+Queremos calcular la complejidad temporal $T(n)$ de agregar $n$ elementos.
+
+$$T(n) = 1 + 1 + \cdots + 1 + C\\+1+ \cdots+1+2C+\\+1+ \cdots+1+4C+\cdots\\+1+ \cdots+1+(2^{\lceil \log_2(n/C) \rceil})\cdot C \\ \leq n + C\cdot(1+2+4+\cdots+2^{\lceil \log_2(n/C) \rceil})\\\leq n + C(2^{ \log_2(n/C) + 2}-1)\\=n + C(\frac{4n}{C}-1) = O(n)$$
+
+Entonces la complejidad promedio de agregar un elemento es $T(n)/n = O(n)/n = O(1)$
+
+
 ### Referencias
 
 1. [Elementary Data Structures (part 1): Stacks and Dynamic Arrays](https://youtu.be/ZlZoe37yWEc?si=Pk-REU0ctg3bVXJ5). YouTube: Algorithms Lab.
@@ -96,3 +105,5 @@ Entonces $T(n)/n = O(n^2)/n = O(n)$, dónde $T(n)/n$ representa la complejidad t
 3. [2024-03-21 - Teórica - Implementación sobre Arreglos y Estructuras enlazadas](https://youtu.be/57hepjLPA30?si=8RiiN4wYslrU0iFp). YouTube: Algoritmos Fiuba Curso Buchwald.
 
 4. [Whiteboard: Analysis of Incremental Strategy for Dynamic Arrays](https://youtu.be/1GpWHME0vKs?si=cBe0owCuPt5TGsWS). YouTube: Algorithms Lab.
+
+5. [Whiteboard: Analysis of Doubling Strategy for Dynamic Arrays](https://youtu.be/kMo3d_tK2Lc?si=witMR0JhJU44kDj3). YouTube: Algorithms Lab.
