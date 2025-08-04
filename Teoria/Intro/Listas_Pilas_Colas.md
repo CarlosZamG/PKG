@@ -95,6 +95,10 @@ $$T(n) = 1 + 1 + \cdots + 1 + C\\+1+ \cdots+1+2C+\\+1+ \cdots+1+4C+\cdots\\+1+ \
 
 Entonces la complejidad promedio de agregar un elemento es $T(n)/n = O(n)/n = O(1)$
 
+**¿Cuándo debemos achicar el tamaño del arreglo**
+
+En la parte anterior vimos que una buena estrategia para agrandar el arreglo era duplicar el tamaño, siguiendo esa idea una estrategia para achicar la capacidad del arreglo es reducir el espacio a la mitad, de tal manera que al hacerlo nos quede una capacidad igual al doble de la cantidad total de elementos, es decir, vamos a dividir la capacidad a la mitad cuando la cantidad total de elementos sea menor o igual a un cuarto de la capacidad  
+
 
 ### Referencias
 
