@@ -82,5 +82,10 @@ int main()
     else
         printf(RED "Test 7 failed\n" RESET);
 
-
+    int arr5[] = {0, 1, 30, 2, 23, 5, 30};
+    size = sizeof(arr5)/sizeof(arr5[0]);
+    if (max_array(arr5, size - 1) == 30) 
+        printf(GREEN "Test 8 passed\n" RESET);
+    else
+        printf(RED "Test 8 failed\n" RESET);
 }
