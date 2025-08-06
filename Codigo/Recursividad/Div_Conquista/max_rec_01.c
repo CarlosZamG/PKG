@@ -4,6 +4,11 @@
 #define GREEN   "\x1B[32m"
 #define RESET "\x1B[0m"
 
+// Command to generate the executable:
+//      gcc max_rec_01.c -o max_01.out
+// Command to run the program:
+//      ./max_01.out
+
 
 int max_array(int *arr, int end)
 {
