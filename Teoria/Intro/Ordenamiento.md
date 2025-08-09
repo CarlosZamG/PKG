@@ -46,7 +46,7 @@ $$\log(n!) = \log(1\cdot2\cdot3\cdots n)=\\\log(1)+\log(2)+\cdots+\log(\frac{n}{
 ___
 
 
-Por lo tanto no puede existir un algoritmo de ordenamiento comparativo ser mejor que $O(n\log n)$
+Por lo tanto no puede existir un algoritmo de ordenamiento comparativo que sea mejor que $O(n\log n)$
 
 
 ### Quicksort
