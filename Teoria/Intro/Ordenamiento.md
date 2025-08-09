@@ -88,3 +88,7 @@ graph TD
     classDef yellow fill:#fff2b2,stroke:#333,stroke-width:1px;
     
 ```
+
+# Referencias
+
+[2024-04-08 - Teórica - Ordenamientos no Comparativos - Counting Sort](https://youtu.be/v0DGQ8tYcis?si=3bIl_SPF5pI-mXPb). YouTube: Algoritmos Fiuba Curso Buchwald
