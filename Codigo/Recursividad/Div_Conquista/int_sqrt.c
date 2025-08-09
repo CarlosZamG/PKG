@@ -4,6 +4,12 @@
 #define GREEN   "\x1B[32m"
 #define RESET "\x1B[0m"
 
+// Command to generate the executable:
+//      gcc int_sqrt.c -o int_sqrt.out
+// Command to run the program:
+//      ./int_sqrt.out
+
+
 int sqrt_search(int start, int end, int num)
 {
     if (start == end)
