@@ -48,6 +48,63 @@ ___
 
 Por lo tanto no puede existir un algoritmo de ordenamiento comparativo que sea mejor que $O(n\log n)$
 
+### Mergesort
+
+```mermaid
+graph TD
+  %% Top
+  A["[8, 5, 2, 1, 17, 4, 10, 6]"]:::lightpurple
+
+  %% Split level
+  A --> L["[8, 5, 2, 1]"]:::lightpurple
+  A --> R["[17, 4, 10, 6]"]:::lightpurple
+
+  %% Left subtree
+  L --> L1["[8, 5]"]:::lightpurple
+  L --> L2["[2, 1]"]:::lightpurple
+
+  L1 --> l11["[8]"]:::mint
+  L1 --> l12["[5]"]:::mint
+  L2 --> l21["[2]"]:::mint
+  L2 --> l22["[1]"]:::mint
+
+  %% Left merges
+  l11 --> mL1["[5, 8]"]:::mint
+  l12 --> mL1
+  l21 --> mL2["[1, 2]"]:::mint
+  l22 --> mL2
+
+  mL1 --> leftSorted["[1, 2, 5, 8]"]:::mint
+  mL2 --> leftSorted
+
+  %% Right subtree
+  R --> R1["[17, 4]"]:::lightpurple
+  R --> R2["[10, 6]"]:::lightpurple
+
+  R1 --> r11["[17]"]:::mint
+  R1 --> r12["[4]"]:::mint
+  R2 --> r21["[10]"]:::mint
+  R2 --> r22["[6]"]:::mint
+
+  %% Right merges
+  r11 --> mR1["[4, 17]"]:::mint
+  r12 --> mR1
+  r21 --> mR2["[6, 10]"]:::mint
+  r22 --> mR2
+
+  mR1 --> rightSorted["[4, 6, 10, 17]"]:::mint
+  mR2 --> rightSorted
+
+  %% Final merge
+  leftSorted --> FINAL["[1, 2, 4, 5, 6, 8, 10 17]"]:::mint
+  rightSorted --> FINAL
+
+  %% Classes (colors)
+  classDef purple fill:#a68be8,stroke:#6a3fa8,stroke-width:1px;
+  classDef lightpurple fill:#d9c9f8,stroke:#6a3fa8,stroke-width:1px;
+  classDef mint fill:#9fe6B3,stroke:#2f7a3a,stroke-width:1px;
+```
+
 
 ### Quicksort
 
