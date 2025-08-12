@@ -84,6 +84,45 @@ int compute_pivot_random_median(int *arr, int start, int end)
 }
 
 
+void quicksort_random_pivot(int *arr, int size)
+{
+    quicksorting_random_pivot(arr, 0, size - 1);
+}
+
+
+void quicksorting_random_pivot(int *arr, int start, int end)
+{
+    // Base case: Array only have one element or zero elements
+    if (start >= end)
+    {
+        // Do nothing
+        return;
+    }
+
+    int pivot = compute_pivot_random_pivot(arr, start, end);
+    int index = partition(arr, start, end, pivot);
+    // index of where is the pivot after partition
+
+    // Call recursively quicksorting_static_median() 
+    if (index - 1 >= start)
+    {
+        quicksorting_static_median(arr, start, index - 1);
+    }
+    if (index + 1 <= end)
+    {
+        quicksorting_static_median(arr, index + 1, end);
+    }
+}
+
+
+int compute_pivot_random_pivot(int *arr, int start, int end)
+{
+    int length = end - start + 1;
+    int random_index = start + (rand() % length);
+    return arr[random_index];
+}
+
+
 int partition(int *arr, int start, int end, int pivot)
 {
     int i = start;
