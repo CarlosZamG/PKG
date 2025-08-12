@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+#include "MySorting.h"
+
 // Command to generate the executable:
 //      gcc quicksort.c -o quicksort.out
 // Command to run the program:
@@ -83,7 +85,7 @@ int partition(int *arr, int start, int end, int pivot)
 
 int compute_pivot_static_median(int *arr, int start, int end)
 {
-    // Compute middle point os start and end
+    // Compute middle point of start and end
     int middle = start + (end-start)/2;
     // Choose pivot as the median of arr[start], arr[end] and arr[middle]
     int pivot = median_of_3(arr[start], arr[middle], arr[end]);
