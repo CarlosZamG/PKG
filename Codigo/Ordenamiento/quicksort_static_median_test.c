@@ -3,9 +3,9 @@
 #include "MySorting.h"
 
 // Command to generate the executable:
-//      gcc quicksort_test.c -o quicksort_test.out
+//      gcc quicksort.c quicksort_static_median_test.c -o quicksort_static_median_test.out
 // Command to run the program:
-//      ./quicksort_test.out
+//      ./quicksort_static_median_test.out
 
 int main()
 {
