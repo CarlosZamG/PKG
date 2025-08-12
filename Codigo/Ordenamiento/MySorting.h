@@ -29,6 +29,8 @@ void quicksorting_static_median(int *arr, int start, int end);
 //      int *arr: integer pointer to the beginning of the array
 //      int start: beginning of the range that is going to be sorted
 //      int end: end of the range that is going to be sorted 
+// Returns:
+//      int: the value of the pivot
 int compute_pivot_static_median(int *arr, int start, int end);
 
 
@@ -68,6 +70,8 @@ int compute_pivot_random_median(int *arr, int start, int end);
 //      int start: beginning of the range that is going to be sorted
 //      int end: end of the range that is going to be sorted 
 //      int pivot: the pivot of quicksort algorithm
+// Returns:
+//      int: index of where is the pivot
 int partition(int *arr, int start, int end, int pivot);
 
 
