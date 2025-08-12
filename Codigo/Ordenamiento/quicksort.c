@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "MySorting.h"
 
 
@@ -37,8 +39,48 @@ int compute_pivot_static_median(int *arr, int start, int end)
     // Compute middle point of start and end
     int middle = start + (end-start)/2;
     // Choose pivot as the median of arr[start], arr[end] and arr[middle]
-    int pivot = median_of_3(arr[start], arr[middle], arr[end]);
-    return pivot;
+    return median_of_3(arr[start], arr[middle], arr[end]);
+}
+
+
+void quicksort_random_median(int *arr, int size)
+{
+    quicksorting_random_median(arr, 0, size - 1);
+}
+
+
+void quicksorting_random_median(int *arr, int start, int end)
+{
+    // Base case: Array only have one element or zero elements
+    if (start >= end)
+    {
+        // Do nothing
+        return;
+    }
+
+    int pivot = compute_pivot_random_median(arr, start, end);
+    int index = partition(arr, start, end, pivot);
+    // index of where is the pivot after partition
+
+    // Call recursively quicksorting_static_median() 
+    if (index - 1 >= start)
+    {
+        quicksorting_static_median(arr, start, index - 1);
+    }
+    if (index + 1 <= end)
+    {
+        quicksorting_static_median(arr, index + 1, end);
+    }
+}
+
+
+int compute_pivot_random_median(int *arr, int start, int end)
+{
+    int length = end - start + 1;
+    int r1 = start + (rand() % length);
+    int r2 = start + (rand() % length);
+    int r3 = start + (rand() % length);
+    return median_of_3(arr[r1], arr[r2], arr[r3]);
 }
 
 
