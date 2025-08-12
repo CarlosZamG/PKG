@@ -22,11 +22,13 @@ int median_of_3(int num_1, int num_2, int num_3)
 
     if (num_3 > max)
     {
+        // num_3 > max >= min
         median = max;
         max = num_3;
     }
     else if(num_3 < min)
     {
+        // num_3 < min <= max
         median = min;
         min = num_3;
     }
@@ -56,10 +58,12 @@ int partition(int *arr, int start, int end, int pivot)
     {
         if (arr[i] < pivot)
         {
+            // arr[i] is in the right side
             i++;
         }
         else if(arr[j] > pivot)
         {
+            // arr[j] is in the right side
             j--;
         }
         else
@@ -79,14 +83,16 @@ int partition(int *arr, int start, int end, int pivot)
 
 int compute_pivot_static_median(int *arr, int start, int end)
 {
+    // Compute middle point os start and end
     int middle = start + (end-start)/2;
+    // Choose pivot as the median of arr[start], arr[end] and arr[middle]
     int pivot = median_of_3(arr[start], arr[middle], arr[end]);
     return pivot;
 }
 
 void quicksorting_static_median(int *arr, int start, int end)
 {
-    // Base case: Array only have one element
+    // Base case: Array only have one element or zero elements
     if (start >= end)
     {
         // Do nothing
@@ -95,7 +101,9 @@ void quicksorting_static_median(int *arr, int start, int end)
 
     int pivot = compute_pivot_static_median(arr, start, end);
     int index = partition(arr, start, end, pivot);
+    // index of where is the pivot after partition
 
+    // Call recursively quicksorting_static_median() 
     if (index - 1 >= start)
     {
         quicksorting_static_median(arr, start, index - 1);
