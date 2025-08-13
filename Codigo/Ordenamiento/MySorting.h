@@ -1,6 +1,10 @@
 #ifndef MY_SORTING_H_INCLUDED
 #define MY_SORTING_H_INCLUDED
 
+// Sort in place the given integer array using insertionsort algorithm
+void insertionsort(int *arr, int size);
+
+
 // Sort in place the given integer array using quicksort algorithm
 // 
 // If is sorting arr[start:end], choose pivot as median of
